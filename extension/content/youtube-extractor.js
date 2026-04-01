@@ -8,7 +8,6 @@ function $(selector) {
 (async () => {
   if (window.top !== window) return;
   const extId = document.currentScript?.src.split('://')[1]?.split('/')[0];
-  const baseUrl = extId ? `chrome-extension://${extId}/` : '../';
 
   const setTimeoutWithCleanup = (callback, delay) => setTimeout(callback, delay);
 
