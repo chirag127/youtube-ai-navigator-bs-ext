@@ -97,7 +97,8 @@ export class AIConfig {
         return;
       }
       m.forEach(x => {
-        const n = typeof x === 'string' ? x.replace('models/', '') : x.name.replace('models/', '') || x;
+        const n =
+          typeof x === 'string' ? x.replace('models/', '') : x.name.replace('models/', '') || x;
         const o = document.createElement('option');
         o.value = n;
         o.textContent = n;

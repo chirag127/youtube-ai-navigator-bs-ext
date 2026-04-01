@@ -23,7 +23,8 @@ export class SettingsManager {
   async load() {
     try {
       const r = await chrome.storage.sync.get('config');
-      if (r.config && Object.keys(r.config).length > 0) this.settings = this.mergeWithDefaults(r.config);
+      if (r.config && Object.keys(r.config).length > 0)
+        this.settings = this.mergeWithDefaults(r.config);
       else {
         this.settings = this.getDefaults();
       }

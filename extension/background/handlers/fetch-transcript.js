@@ -44,7 +44,7 @@ async function fYT(vid, lNg = 'en') {
         const s = pXML(x);
         if (s.length) return { success: true, data: s };
       }
-    } catch (e) { } // eslint-disable-line no-empty
+    } catch (e) {} // eslint-disable-line no-empty
   }
   return { success: false, error: 'YouTube Direct API failed' };
 }
@@ -58,7 +58,7 @@ export async function handleFetchTranscript(req, rsp) {
         rsp(r);
         return;
       }
-    } catch (e) { } // eslint-disable-line no-empty
+    } catch (e) {} // eslint-disable-line no-empty
   }
   rsp({ success: false, error: 'All transcript fetch methods failed' });
 }

@@ -4,7 +4,13 @@
  */
 
 export const DEFAULT_CONFIG = {
-  comments: { enabled: true, timeToLive: 86400000, translate: true, collapse: true, metadata: true },
+  comments: {
+    enabled: true,
+    timeToLive: 86400000,
+    translate: true,
+    collapse: true,
+    metadata: true,
+  },
   sponsors: { autoSkip: true, skipButton: true, showNotice: true, showMarker: true },
   transcript: {
     autoCopy: true,
@@ -17,10 +23,38 @@ export const DEFAULT_CONFIG = {
     autoSync: true,
   },
   comments: { enabled: true, limit: 20, interval: 3, sortBy: 'top', autoSync: true },
-  metadata: { title: true, author: true, views: true, duration: true, description: true, tags: true, uploadDate: true },
-  userInterface: { theme: 'dark', widgetTheme: 'liquid-glass', widgetPosition: 'secondary', animationsEnabled: true, smoothTransitions: true, compactMode: false },
-  artificialIntelligence: { apiKey: '', model: 'gemini-2.5-flash-lite-preview-09-2025', customPrompt: '', outputLanguage: 'en', temperature: 0.7, maxTokens: 8192 },
-  autoUsage: { autoApprove: true, autoLike: true, autoThrottle: 50, lazyLoading: true, lowLatency: true },
+  metadata: {
+    title: true,
+    author: true,
+    views: true,
+    duration: true,
+    description: true,
+    tags: true,
+    uploadDate: true,
+  },
+  userInterface: {
+    theme: 'dark',
+    widgetTheme: 'liquid-glass',
+    widgetPosition: 'secondary',
+    animationsEnabled: true,
+    smoothTransitions: true,
+    compactMode: false,
+  },
+  artificialIntelligence: {
+    apiKey: '',
+    model: 'gemini-2.5-flash-lite-preview-09-2025',
+    customPrompt: '',
+    outputLanguage: 'en',
+    temperature: 0.7,
+    maxTokens: 8192,
+  },
+  autoUsage: {
+    autoApprove: true,
+    autoLike: true,
+    autoThrottle: 50,
+    lazyLoading: true,
+    lowLatency: true,
+  },
   segments: {
     enabled: true,
     categories: {
@@ -61,7 +95,10 @@ export class ConfigurationManager {
   async loadConfiguration() {
     const storedConfiguration = await chrome.storage.sync.get('configuration');
     if (storedConfiguration.configuration) {
-      this.currentConfiguration = this.mergeConfigurations(DEFAULT_CONFIG, storedConfiguration.configuration);
+      this.currentConfiguration = this.mergeConfigurations(
+        DEFAULT_CONFIG,
+        storedConfiguration.configuration
+      );
     }
     return this.currentConfiguration;
   }
@@ -82,7 +119,12 @@ export class ConfigurationManager {
    */
   getConfigurationValue(configurationPath) {
     if (!configurationPath) return this.currentConfiguration;
-    return configurationPath.split('.').reduce((configurationObject, configurationKey) => configurationObject?.[configurationKey], this.currentConfiguration);
+    return configurationPath
+      .split('.')
+      .reduce(
+        (configurationObject, configurationKey) => configurationObject?.[configurationKey],
+        this.currentConfiguration
+      );
   }
 
   /**
@@ -144,8 +186,14 @@ export class ConfigurationManager {
   mergeConfigurations(defaultConfiguration, storedConfiguration) {
     const mergedResult = { ...defaultConfiguration };
     for (const configurationKey in storedConfiguration) {
-      if (typeof storedConfiguration[configurationKey] === 'object' && !Array.isArray(storedConfiguration[configurationKey])) {
-        mergedResult[configurationKey] = this.mergeConfigurations(defaultConfiguration[configurationKey] || {}, storedConfiguration[configurationKey]);
+      if (
+        typeof storedConfiguration[configurationKey] === 'object' &&
+        !Array.isArray(storedConfiguration[configurationKey])
+      ) {
+        mergedResult[configurationKey] = this.mergeConfigurations(
+          defaultConfiguration[configurationKey] || {},
+          storedConfiguration[configurationKey]
+        );
       } else {
         mergedResult[configurationKey] = storedConfiguration[configurationKey];
       }

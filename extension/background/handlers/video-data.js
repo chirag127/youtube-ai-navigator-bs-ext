@@ -44,7 +44,7 @@ export const handleGetVideoData = async req => {
         }
         break;
       case 'transcript':
-        r = await new Promise((resolve) => {
+        r = await new Promise(resolve => {
           handleGetTranscript({ videoId, lang: options.lang || 'en' }, resolve);
         });
         if (r.success) {
@@ -53,7 +53,7 @@ export const handleGetVideoData = async req => {
         }
         break;
       case 'comments':
-        r = await new Promise((resolve) => {
+        r = await new Promise(resolve => {
           handleGetComments({ videoId, limit: options.limit || 20 }, resolve);
         });
         if (r.success) {

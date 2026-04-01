@@ -31,7 +31,7 @@ export async function renderComments(c) {
     // Scroll to comments and wait for them to load
     await forceLoadComments();
     showLoading(c, 'Waiting for comments...');
-    await setTimeout(() => { }, 1200); // Increased wait time for lazy-load
+    await setTimeout(() => {}, 1200); // Increased wait time for lazy-load
 
     try {
       // Extract comments with retry logic - stay scrolled down during this process
@@ -39,10 +39,12 @@ export async function renderComments(c) {
 
       // Scroll back AFTER extraction completes - improved logic
       if (cfg.scroll?.scrollBackAfterComments !== false) {
-        await setTimeout(() => { }, 500); // Increased delay for better reliability
+        await setTimeout(() => {}, 500); // Increased delay for better reliability
 
         // Use the scroll manager's restorePosition method for better reliability
-        const { restoreScrollPosition } = await import(chrome.runtime.getURL('content/utils/scroll-manager.js'));
+        const { restoreScrollPosition } = await import(
+          chrome.runtime.getURL('content/utils/scroll-manager.js')
+        );
         restoreScrollPosition();
 
         // Fallback to manual scroll if restorePosition fails
@@ -99,8 +101,10 @@ export async function renderComments(c) {
     } catch (x) {
       // Scroll back even on error after full retry attempts
       if (cfg.scroll?.scrollBackAfterComments !== false) {
-        await setTimeout(() => { }, 500);
-        const { restoreScrollPosition } = await import(chrome.runtime.getURL('content/utils/scroll-manager.js'));
+        await setTimeout(() => {}, 500);
+        const { restoreScrollPosition } = await import(
+          chrome.runtime.getURL('content/utils/scroll-manager.js')
+        );
         restoreScrollPosition();
 
         // Fallback to manual scroll if restorePosition fails
@@ -136,7 +140,7 @@ async function forceLoadComments() {
       const maxAttempts = 20; // 20 * 500ms = 10 seconds
 
       while (attempts < maxAttempts) {
-        await setTimeout(() => { }, 500);
+        await setTimeout(() => {}, 500);
 
         // Check if comments have loaded
         const comments = document.querySelectorAll(
@@ -144,7 +148,7 @@ async function forceLoadComments() {
         );
         if (comments && comments.length > 0) {
           // Comments appeared! Give a tiny bit more time for text to render
-          await setTimeout(() => { }, 500);
+          await setTimeout(() => {}, 500);
           return;
         }
 
@@ -161,7 +165,7 @@ async function forceLoadComments() {
         if (attempts % 5 === 0) {
           const currentScroll = window.scrollY;
           window.scrollBy(0, -100); // Scroll up more to trigger lazy load
-          await setTimeout(() => { }, 200); // Increased wait time
+          await setTimeout(() => {}, 200); // Increased wait time
           window.scrollBy(0, 100); // Scroll back down
 
           // Ensure we're back at the bottom for next attempt
@@ -177,7 +181,7 @@ async function forceLoadComments() {
 
     // Fallback if no comments section found (e.g. mobile/other layout)
     window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
-    await setTimeout(() => { }, 2000);
+    await setTimeout(() => {}, 2000);
   } catch (err) {
     console.error('Err:forceLoadComments', err);
   }
@@ -197,7 +201,7 @@ function scrollBackToTop(pos = 0, sn = true) {
       return;
     }
 
-    const animateScroll = (timestamp) => {
+    const animateScroll = timestamp => {
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const easeProgress = easeOutCubic(progress);

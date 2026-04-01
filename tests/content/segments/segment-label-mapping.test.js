@@ -1,4 +1,10 @@
-import { getLabelKey, getLabelName, getLabelColor, LABEL_MAPPING, COLOR_MAPPING } from '../../../extension/content/segments/label-mapping.js';
+import {
+  getLabelKey,
+  getLabelName,
+  getLabelColor,
+  LABEL_MAPPING,
+  COLOR_MAPPING,
+} from '../../../extension/content/segments/label-mapping.js';
 
 describe('Segment Label Mapping Tests', () => {
   describe('Label Key Mapping (getLabelKey)', () => {

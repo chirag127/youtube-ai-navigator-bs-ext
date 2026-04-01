@@ -7,7 +7,7 @@
  * Enhanced warning logging function
  * @param {string} warningMessage - The warning message to log
  */
-const logWarning = (warningMessage) => {
+const logWarning = warningMessage => {
   console.error(warningMessage);
 };
 

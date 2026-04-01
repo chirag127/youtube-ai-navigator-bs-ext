@@ -43,7 +43,7 @@ export const createCachedData = (cacheKey, timeToLive = 300000) => ({
     const cacheEntry = cacheStorage.get(cacheKey);
     return cacheEntry && Date.now() - cacheEntry.timestamp < timeToLive ? cacheEntry.value : null;
   },
-  set: (cacheValue) => {
+  set: cacheValue => {
     cacheStorage.set(cacheKey, { value: cacheValue, timestamp: Date.now() });
   },
 });

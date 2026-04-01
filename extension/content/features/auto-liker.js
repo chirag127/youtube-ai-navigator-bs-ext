@@ -166,7 +166,11 @@ export class AutoLiker {
       for (const sel of s) {
         const btns = document.querySelectorAll(sel);
         for (const b of btns) {
-          if (b.closest('#top-level-buttons-computed') || b.closest('#actions') || b.closest('ytd-menu-renderer')) {
+          if (
+            b.closest('#top-level-buttons-computed') ||
+            b.closest('#actions') ||
+            b.closest('ytd-menu-renderer')
+          ) {
             lb = b;
             console.log(`AL: Found like button with selector: ${sel}`);
             break;
@@ -175,13 +179,20 @@ export class AutoLiker {
         if (lb) break;
       }
       if (!lb) {
-        console.warn('AL: Like button not found with primary selectors, trying alternative approach');
+        console.warn(
+          'AL: Like button not found with primary selectors, trying alternative approach'
+        );
         // Try alternative approach - find any button with like-related attributes
-        const altBtns = document.querySelectorAll('button[aria-label*="like"], button[aria-label*="Like"], button[aria-label*="thumbs"]');
+        const altBtns = document.querySelectorAll(
+          'button[aria-label*="like"], button[aria-label*="Like"], button[aria-label*="thumbs"]'
+        );
         for (const b of altBtns) {
-          if (b.offsetParent !== null) { // Only visible buttons
+          if (b.offsetParent !== null) {
+            // Only visible buttons
             lb = b;
-            console.log(`AL: Found like button with alternative selector, aria-label: ${b.getAttribute('aria-label')}`);
+            console.log(
+              `AL: Found like button with alternative selector, aria-label: ${b.getAttribute('aria-label')}`
+            );
             break;
           }
         }
@@ -218,7 +229,7 @@ export class AutoLiker {
       const clickEvent = new MouseEvent('click', {
         view: window,
         bubbles: true,
-        cancelable: true
+        cancelable: true,
       });
       lb.dispatchEvent(clickEvent);
       // Also try direct click as fallback
@@ -226,7 +237,8 @@ export class AutoLiker {
 
       // Wait a bit and check if the like was successful
       await new Promise(resolve => setTimeout(resolve, 1000));
-      const stillLkd = lb.getAttribute('aria-pressed') === 'true' ||
+      const stillLkd =
+        lb.getAttribute('aria-pressed') === 'true' ||
         lb.classList.contains('style-default-active') ||
         lb.classList.contains('yt-spec-button-shape-next--filled') ||
         lb.classList.contains('yt-spec-button-shape-next--tonal');

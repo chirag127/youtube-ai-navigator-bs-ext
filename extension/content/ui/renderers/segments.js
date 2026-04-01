@@ -1,7 +1,9 @@
 const { showPlaceholder } = await import(chrome.runtime.getURL('content/ui/components/loading.js'));
 const { seekVideo } = await import(chrome.runtime.getURL('content/utils/dom.js'));
 const { formatTime } = await import(chrome.runtime.getURL('content/utils/time.js'));
-const { getLabelName, getLabelColor } = await import(chrome.runtime.getURL('content/segments/label-mapping.js'));
+const { getLabelName, getLabelColor } = await import(
+  chrome.runtime.getURL('content/segments/label-mapping.js')
+);
 
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
