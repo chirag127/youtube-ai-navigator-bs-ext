@@ -3,6 +3,7 @@
   "name": "YouTube AI Navigator",
   "version": "2.0.0",
   "description": "AI-powered YouTube insights with smart segmentation",
+  "homepage_url": "https://chirag127.github.io/youtube-ai-navigator-bs-ext/",
   "icons": {
     "16": "assets/icon16.png",
     "48": "assets/icon48.png",

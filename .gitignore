@@ -56,3 +56,11 @@ web-ext-data/ # Temporary profiles created by web-ext (Firefox extension testing
 
 # CI/CD specific generated files
 /.github/workflows/*.json # For example, if workflow runs generate temporary JSON outputs
+
+# Stray output files
+eslint-output.json
+eslint-tests.json
+test-results.json
+test_output*.txt
+megalinter-reports/
+mega-linter.log
