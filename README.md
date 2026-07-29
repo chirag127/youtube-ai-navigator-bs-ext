@@ -9,7 +9,7 @@
     <img src="https://github.com/chirag127/youtube-ai-navigator-bs-ext/actions/workflows/ci.yml/badge.svg?branch=main&event=push&style=flat-square" alt="Build Status">
   </a>
   <a href="https://codecov.io/gh/chirag127/youtube-ai-navigator-bs-ext" target="_blank">
-    <img src="https://codecov.io/gh/chirag127/youtube-ai-navigator-bs-ext/branch/main/graph/badge.svg?token=YOUR_CODECOV_TOKEN_HERE&style=flat-square" alt="Code Coverage">
+    <img src="https://codecov.io/gh/chirag127/youtube-ai-navigator-bs-ext/branch/main/graph/badge.svg?style=flat-square" alt="Code Coverage">
   </a>
   <img src="https://img.shields.io/badge/Tech-TypeScript%20%7C%20WXT%20%7C%20Gemini%20AI-blueviolet?style=flat-square" alt="Tech Stack">
   <img src="https://img.shields.io/badge/Lint/Format-Biome-00B3A6?style=flat-square" alt="Lint/Format">
@@ -24,7 +24,7 @@
 <h3 align="center">Star ⭐ this Repo! Your support fuels innovation!</h3>
 
 <p align="center">
-  <strong>Live site:</strong> <a href="https://chirag127.github.io/youtube-ai-navigator-bs-ext/">https://chirag127.github.io/youtube-ai-navigator-bs-ext/</a>
+  <strong>Live site:</strong> <a href="https://yt-nav.oriz.in/">https://yt-nav.oriz.in/</a>
 </p>
 
 ---
